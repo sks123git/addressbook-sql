@@ -1,0 +1,83 @@
+1. Ability to create a Address Book Service DB
+
+mysql> CREATE DATABASE address_book_service;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use address_book_service;
+Database changed
+
+--------------------------------
+2. Ability to create a Address Book Table with first and last names, address, city, state, zip, phone number
+and email as its attributes.
+
+mysql> CREATE TABLE address_book(firstname varchar(40),lastname varchar(40),address varchar(55),city varchar(20), state varchar(20), zip int, phone varchar(10), email varchar(55));
+Query OK, 0 rows affected (0.04 sec)
+
+--------------------------------
+
+3. Ability to insert new Contacts to Address Book
+
+mysql> INSERT INTO address_book(firstname,lastname,address,city,state,zip,phone,email) VALUES ('shubham','singh','karnataka','bangaluru','karnataka',123456,'1009234590','qwe@rty.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM address_book;
++-----------+----------+-----------+-----------+-----------+--------+------------+-------------+
+| firstname | lastname | address   | city      | state     | zip    | phone      | email       |
++-----------+----------+-----------+-----------+-----------+--------+------------+-------------+
+| shubham   | singh    | karnataka | bangaluru | karnataka | 123456 | 1009234590 | qwe@rty.com |
++-----------+----------+-----------+-----------+-----------+--------+------------+-------------+
+1 row in set (0.00 sec)
+
+--------------------------------
+
+4. Ability to edit existing contact person using their name
+
+mysql> UPDATE address_book SET phone = '2990001234' WHERE firstname = 'shubham';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book;
++-----------+----------+-----------+-----------+-----------+--------+------------+-------------+
+| firstname | lastname | address   | city      | state     | zip    | phone      | email       |
++-----------+----------+-----------+-----------+-----------+--------+------------+-------------+
+| shubham   | singh    | karnataka | bangaluru | karnataka | 123456 | 2990001234 | qwe@rty.com |
++-----------+----------+-----------+-----------+-----------+--------+------------+-------------+
+
+---------------------------------
+
+5. Ability to delete a person using person's name
+
+mysql> DELETE FROM address_book WHERE firstname = 'shubham';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from address_book;
++-----------+----------+---------+---------+-------+--------+------------+-------------+
+| firstname | lastname | address | city    | state | zip    | phone      | email       |
++-----------+----------+---------+---------+-------+--------+------------+-------------+
+| kundan    | chauhan  | bihar   | sheohar | bihar | 123766 | 1009234590 | kun@dan.com |
++-----------+----------+---------+---------+-------+--------+------------+-------------+
+1 row in set (0.00 sec)
+
+----------------------------------
+
+6. Ability to Retrieve Person belonging to a City or State from the Address Book
+
+mysql> select * from address_book WHERE city = 'sheohar';
++-----------+----------+---------+---------+-------+--------+------------+-------------+
+| firstname | lastname | address | city    | state | zip    | phone      | email       |
++-----------+----------+---------+---------+-------+--------+------------+-------------+
+| kundan    | chauhan  | bihar   | sheohar | bihar | 123766 | 1009234590 | kun@dan.com |
++-----------+----------+---------+---------+-------+--------+------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from address_book WHERE state = 'bihar';
++-----------+----------+---------+---------+-------+--------+------------+-------------+
+| firstname | lastname | address | city    | state | zip    | phone      | email       |
++-----------+----------+---------+---------+-------+--------+------------+-------------+
+| kundan    | chauhan  | bihar   | sheohar | bihar | 123766 | 1009234590 | kun@dan.com |
++-----------+----------+---------+---------+-------+--------+------------+-------------+
+1 row in set (0.00 sec)
+
+----------------------------------
+
+7. 
